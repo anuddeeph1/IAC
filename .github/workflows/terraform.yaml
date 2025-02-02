@@ -72,6 +72,20 @@ jobs:
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/httpd-app:v1.0 
           echo "Image pushed to ECR."
 
+      - name: nctl-scan-installer
+        uses: nirmata/action-install-nctl-scan@v0.0.4
+
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+
+      - name: Check nctl version
+        run: nctl version
+
+      - name: NCTL Scan - Kubernetes
+        run: nctl scan kubernetes --policies controls/pss --resources config-files/k8s 
+
+      - name: NCTL Scan - Kubernetes Detailed Report
+        run: nctl scan kubernetes --policies controls/pss --resources config-files/k8s --details 
+        
       - name: Set up kubeconfig for EKS
         run: |
           echo "Setting up kubectl for EKS..."
@@ -103,4 +117,5 @@ jobs:
           #kubectl create secret docker-registry image-pull-secret --docker-server=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com --docker-username=AWS --docker-password=$(aws ecr get-login-password --region ${{ secrets.AWS_REGION }}) --docker-email=${{ secrets.EMAIL }}
           cd config-files/k8s
           envsubst < httpd.yaml | kubectl -n httpd apply -f -
+          
       - run: echo "🍏 This job's status is ${{ job.status }}."
