@@ -1,12 +1,7 @@
-FROM ubuntu:latest
+FROM httpd:2.4
 
-WORKDIR /app
+# Copy custom HTML files to the container
+COPY ./index.html /usr/local/apache2/htdocs/
 
-ADD . /app/
-
-RUN apt-get update && apt-get install -y nano
-
-EXPOSE 8080
-
-# Example: Run a command when the container starts
-CMD ["echo", "ADD is present in the Dockerfile"]
+# Expose port 80
+EXPOSE 80
