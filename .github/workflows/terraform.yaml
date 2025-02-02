@@ -72,20 +72,18 @@ jobs:
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/httpd-app:v1.0 
           echo "Image pushed to ECR."
 
-      - name: nctl-scan-installer
-        uses: nirmata/action-install-nctl-scan@v0.0.4
+      - name: Install Kyverno CLI
+        uses: kyverno/action-install-cli@v0.2.0
+        
+      - name: Check install
+        run: kyverno version
 
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-
-      - name: Check nctl version
-        run: nctl version
-
-      - name: NCTL Scan - Kubernetes
+      - name: kyverno Scan - Kubernetes
         run: |
           cd config-files/k8s
           envsubst < httpd.yaml > httpd-with-image.yaml
           cd ../..
-          nctl scan kubernetes --policies controls/pod-security --resources config-files/k8s/httpd-with-image.yaml --details 
+          kyverno apply controls/pod-security/* --resources config-files/k8s/httpd-with-image.yaml --detailed-results
         
       - name: Set up kubeconfig for EKS
         run: |
