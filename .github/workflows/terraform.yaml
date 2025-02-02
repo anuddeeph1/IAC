@@ -16,7 +16,7 @@ env:
   AWS_SESSION_TOKEN: ${{secrets.AWS_SESSION_TOKEN}}
 
 jobs:
-  Terraform-code-scan:
+  Deploy-EKS-using-TF:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
