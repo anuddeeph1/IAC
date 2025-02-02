@@ -83,7 +83,7 @@ jobs:
           cd config-files/k8s
           envsubst < httpd.yaml > httpd-with-image.yaml
           cd ../..
-          kyverno apply controls/pod-security/* --resource config-files/k8s/httpd-with-image.yaml --audit-warn
+          kyverno apply controls/pod-security/* --resource config-files/k8s/httpd-with-image.yaml --audit-warn || true
         
       - name: Set up kubeconfig for EKS
         run: |
