@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: httpd
+  name: httpd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: httpd
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: httpd
+    spec:
+      imagePullSecrets:
+      - name: image-pull-secret
+      containers:
+      - image: ${IMAGE_NAME}    #844333597536.dkr.ecr.us-west-1.amazonaws.com/httpd-app:v1.0
+        name: httpd-app
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 120m
+            memory: 100Mi
