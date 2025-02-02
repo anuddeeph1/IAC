@@ -13,5 +13,5 @@ variable "subnet_ids" {
 
 variable "region" {
   type    = string
-  default = "eks-tf-backend-test"
+  default = "us-west-1"
 }
