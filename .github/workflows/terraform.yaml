@@ -84,10 +84,8 @@ jobs:
         run: |
           cd config-files/k8s
           envsubst < httpd.yaml > httpd-with-image.yaml
-          nctl scan kubernetes --policies controls/pss --resources config-files/k8s/httpd-with-image.yaml
-
-      - name: NCTL Scan - Kubernetes Detailed Report
-        run: nctl scan kubernetes --policies controls/pss --resources config-files/k8s --details 
+          cd ../..
+          nctl scan kubernetes --policies controls/pod-security --resources config-files/k8s/httpd-with-image.yaml --details 
         
       - name: Set up kubeconfig for EKS
         run: |
