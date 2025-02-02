@@ -1,0 +1,59 @@
+{
+    "cluster": {
+        "name": "bad-eks-cluster-01",
+        "arn": "arn:aws:eks:ap-south-1:xxxx:cluster/bad-eks-cluster-01",
+        "createdAt": "2024-09-11T09:55:46.392000+00:00",
+        "version": "1.30",
+        "endpoint": "https://5E76E06C199490607C4FEEAA6244CAA7.gr7.ap-south-1.eks.amazonaws.com",
+        "roleArn": "arn:aws:iam::xxxx:role/test-eks-cluster-role-01",
+        "resourcesVpcConfig": {
+            "subnetIds": [
+                "subnet-edccd285",
+                "subnet-0bcd5c70"
+            ],
+            "securityGroupIds": [],
+            "clusterSecurityGroupId": "sg-07234099a13fff13d",
+            "vpcId": "vpc-2656a74d",
+            "endpointPublicAccess": true,
+            "endpointPrivateAccess": false,
+            "publicAccessCidrs": [
+                "0.0.0.0/0"
+            ]
+        },
+        "kubernetesNetworkConfig": {
+            "serviceIpv4Cidr": "10.100.0.0/16",
+            "ipFamily": "ipv4"
+        },
+        "logging": {
+            "clusterLogging": [
+                {
+                    "types": [
+                        "api",
+                        "audit",
+                        "authenticator",
+                        "controllerManager",
+                        "scheduler"
+                    ],
+                    "enabled": false
+                }
+            ]
+        },
+        "identity": {
+            "oidc": {
+                "issuer": "https://oidc.eks.ap-south-1.amazonaws.com/id/5E76E06C199490607C4FEEAA6244CAA7"
+            }
+        },
+        "status": "ACTIVE",
+        "certificateAuthority": {
+            "data": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURCVENDQWUyZ0F3SUJBZ0lJUWtsYWJOMzdCdmN3RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TkRBNU1URXdPVFUwTXpKYUZ3MHpOREE1TURrd09UVTVNekphTUJVeApFekFSQmdOVkJBTVRDbXQxWW1WeWJtVjBaWE13Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLCkFvSUJBUUMrN1pma0JFbFd1bEZzRUEvK0FYVFoxeTZkTlNVcFZvVmVsQTAyNklPMmRRZnpLS3hIYW5PNERQUmkKSjhlU1RhQlhhQTFkZm1vSVpPaTlZMHVsRThyRlBoV2lycTZ6MTNhSHRBbi81OUtXU2VTcFRvZzRNOFRLdjhWZAp4SG9kUEtDYWQxTmV2d1dKY1pSbmlGYmY5ODErQS9XNXE0ekNOZ0tlRVZUbmlWUjRKemxkNFFtNTBaWDNjc2ZQCjBWWFp2cmNEaXBJM3ZCUklaYWtMN1Y2U2hPVnE0Q2drMUQzVVVNWlF5VDg0c0YrZU41NENnellBb29hM3RDWUcKWW1vU2FmcE81WXpRWXoxUElBTWVoQmU5em8wdERlVjFocllxQVMvakY5c3ZpWFU1RGlYNzM0aWxXdm13OEtkcAowYStMQmdPRzNUbllCWS9GZXg0VEdyaDdoZHdCQWdNQkFBR2pXVEJYTUE0R0ExVWREd0VCL3dRRUF3SUNwREFQCkJnTlZIUk1CQWY4RUJUQURBUUgvTUIwR0ExVWREZ1FXQkJUQXdiOERvdmF4L2F4REloUjRFSDg0V1k3WDlqQVYKQmdOVkhSRUVEakFNZ2dwcmRXSmxjbTVsZEdWek1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQ1Q3eTh4MGU3awppMitrWk52NDVMZkVVUmtXNXYxdnFWZXU3SkZISlE5SUE1RW1OUUNqdmxQWnRlekhkSFdsY2t4bENydnZrMFY0ClVEZmh6MXpIZzBVODk0NVVPejhIMjRhRHdXZDVaMWVwcWozMm1CREdGaFprcVRvU0dvMktabWtnTC92dGtkak4Kam5nd3A3L2hUcllVRElKRzI3c0xHa1dHbEJjb0dadUdkQ0pnRWZ3TngvSis4aGZ1S1NkUmV2d0EzVzZqYjBwKwo3eUdjdTRidVNCbkRJbnViZUlZVUZtaFNyTzVyRHhlb3JTTWQrOUVaNVh2U0ZnMk83c1duNkhqbXlNUEw2ZWpUCjd0eDRoenlEL05jVTI4aVpPelhaRTlZNVppaXVFYnp5VHJRQTlFZ2VtTWFodjR5YXFCZ0hUdm05cXkyVGlXSnUKMHVJdDIyOStNeWZFCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
+        },
+        "platformVersion": "eks.7",
+        "tags": {},
+        "health": {
+            "issues": []
+        },
+        "accessConfig": {
+            "authenticationMode": "CONFIG_MAP"
+        }
+    }
+}

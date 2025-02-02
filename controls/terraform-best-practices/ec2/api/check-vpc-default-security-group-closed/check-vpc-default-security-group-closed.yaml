@@ -1,0 +1,29 @@
+apiVersion: json.kyverno.io/v1alpha1
+kind: ValidatingPolicy
+metadata:
+  name: check-vpc-default-security-group-closed
+  annotations:
+    policies.kyverno.io/title: Check VPC Default Security Group Closed
+    policies.kyverno.io/category: AWS EC2 Best Practices
+    policies.kyverno.io/severity: high
+    policies.kyverno.io/description: >-
+      This policy checks whether the default security group of a VPC allows inbound or outbound traffic. 
+      The policy fails if the security group allows inbound or outbound traffic.
+      The rules for the default security group allow all outbound and inbound traffic from network interfaces (and their associated instances) 
+      that are assigned to the same security group. We recommend that you don't use the default security group. 
+      Because the default security group cannot be deleted, you should change the default security group rules setting to restrict 
+      inbound and outbound traffic. This prevents unintended traffic if the default security group is accidentally configured for resources such as EC2 instances.
+spec:
+  rules:
+    - name: check-vpc-default-security-group-closed
+      match:
+        all:
+        - (SecurityGroups[?GroupName] || `[]`| length(@) > `0`): true
+      assert:
+        all:
+        - message: Default security group of a VPC should not allow inbound or outbound traffic. 
+          check:
+            ~.(SecurityGroups[?GroupName == 'default']):
+                (IpPermissions == `[]`): true
+                (IpPermissionsEgress == `[]`): true
+                

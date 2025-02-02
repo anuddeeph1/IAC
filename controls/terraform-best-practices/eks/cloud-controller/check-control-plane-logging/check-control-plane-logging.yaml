@@ -1,0 +1,45 @@
+apiVersion: nirmata.io/v1alpha1
+kind: ValidatingPolicy
+metadata:
+  name: check-control-plane-logging
+  annotations:
+    policies.kyverno.io/title: Check Control Plane Logging
+    policies.kyverno.io/category: EKS Best Practices
+    policies.kyverno.io/severity: medium
+    policies.kyverno.io/description: >-
+      Enabling Amazon EKS control plane logging for all log types is a best practice 
+      for enhancing the security, monitoring, troubleshooting, performance optimization, and operational management of your Kubernetes clusters. 
+      By capturing comprehensive logs of control plane activities, you can effectively manage and secure your 
+      EKS infrastructure while ensuring compliance with regulatory requirements and industry standards.
+  labels:
+    app: kyverno
+spec:
+  failureAction: Audit
+  scan: true
+  rules:
+    - name: check-control-plane-logging
+      identifier: payload.name
+      match:
+        all:
+        - (metadata.provider): "AWS"
+        - (metadata.service): EKS
+        - (metadata.resource): "Cluster"
+      assert:
+        any:
+        # Scanner need to be test again.
+        # Cloud Scanner Policy
+        - message: "EKS control plane logging must be enabled for all log types"
+          check:
+            payload:
+              logging:
+                clusterLogging.enabledTypes[*].type == ['api', 'audit', 'authenticator', 'controllerManager', 'scheduler']): true
+        # Cloud Admission Controller Policy
+        - message: "EKS control plane logging must be enabled for all log types"
+          check:
+            payload:
+              logging:
+                (clusterLogging[?enabled == `true`] | length(@) == `1`): true 
+                ~.(clusterLogging[?enabled == `true`]):
+                    (types):
+                        (contains(@, 'api') && contains(@, 'audit') && contains(@, 'authenticator') && contains(@, 'controllerManager') && contains(@, 'scheduler')): true
+                    

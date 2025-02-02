@@ -1,0 +1,53 @@
+{
+    "cluster": {
+        "name": "good-eks-cluster",
+        "arn": "arn:aws:eks:us-west-2:xxxx:cluster/good-eks-cluster",
+        "createdAt": "2024-11-26T10:26:06.872000+00:00",
+        "version": "1.31",
+        "roleArn": "arn:aws:iam::xxxx:role/example_role",
+        "resourcesVpcConfig": {
+            "subnetIds": [
+                "subnet-id-1",
+                "subnet-id-2"
+            ],
+            "vpcId": "vpc-c7a323bf",
+            "endpointPublicAccess": false,
+            "endpointPrivateAccess": true,
+            "publicAccessCidrs": []
+        },
+        "kubernetesNetworkConfig": {
+            "serviceIpv4Cidr": "10.100.0.0/16",
+            "ipFamily": "ipv4"
+        },
+        "logging": {
+            "clusterLogging": [
+                {
+                    "types": [
+                        "api",
+                        "audit",
+                        "authenticator",
+                        "controllerManager",
+                        "scheduler"
+                    ],
+                    "enabled": false
+                }
+            ]
+        },
+        "status": "ACTIVE",
+        "certificateAuthority": {},
+        "platformVersion": "eks.12",
+        "tags": {},
+        "health": {
+            "issues": []
+        },
+        "accessConfig": {
+            "authenticationMode": "API"
+        },
+        "upgradePolicy": {
+            "supportType": "STANDARD"
+        },
+        "zonalShiftConfig": {
+            "enabled": false
+        }
+    }
+}

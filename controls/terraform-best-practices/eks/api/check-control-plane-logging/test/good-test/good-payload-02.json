@@ -1,0 +1,50 @@
+{
+    "cluster": {
+        "name": "good-eks-cluster-02",
+        "arn": "arn:aws:eks:ap-south-1:xxxx:cluster/good-eks-cluster-02",
+        "createdAt": "2024-09-11T10:12:48.686000+00:00",
+        "version": "1.30",
+        "roleArn": "arn:aws:iam::xxxx:role/test-eks-cluster-role-01",
+        "resourcesVpcConfig": {
+            "subnetIds": [
+                "subnet-edccd285",
+                "subnet-0bcd5c70"
+            ],
+            "securityGroupIds": [],
+            "vpcId": "vpc-2656a74d",
+            "endpointPublicAccess": true,
+            "endpointPrivateAccess": false,
+            "publicAccessCidrs": [
+                "0.0.0.0/0"
+            ]
+        },
+        "kubernetesNetworkConfig": {
+            "serviceIpv4Cidr": "10.100.0.0/16",
+            "ipFamily": "ipv4"
+        },
+        "logging": {
+            "clusterLogging": [
+                {
+                    "types": [
+                        "api",
+                        "audit",
+                        "authenticator",
+                        "controllerManager",
+                        "scheduler"
+                    ],
+                    "enabled": true
+                }
+            ]
+        },
+        "status": "CREATING",
+        "certificateAuthority": {},
+        "platformVersion": "eks.7",
+        "tags": {},
+        "health": {
+            "issues": []
+        },
+        "accessConfig": {
+            "authenticationMode": "CONFIG_MAP"
+        }
+    }
+}

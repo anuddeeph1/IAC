@@ -1,0 +1,35 @@
+{
+    "taskDefinition": {
+        "taskDefinitionArn": "arn:aws:ecs:us-west-2:xxxx:task-definition/bad-task-definition-01:5",
+        "containerDefinitions": [
+            {
+                "name": "sleep",
+                "image": "busybox",
+                "cpu": 10,
+                "memory": 10,
+                "portMappings": [],
+                "essential": true,
+                "command": [
+                    "sleep",
+                    "360"
+                ],
+                "environment": [],
+                "mountPoints": [],
+                "volumesFrom": [],
+                "systemControls": []
+            }
+        ],
+        "family": "bad-task-definition-01",
+        "revision": 5,
+        "volumes": [],
+        "status": "ACTIVE",
+        "placementConstraints": [],
+        "compatibilities": [
+            "EXTERNAL",
+            "EC2"
+        ],
+        "registeredAt": "2024-07-29T06:14:58.622000+00:00",
+        "registeredBy": "arn:aws:sts::xxxx:assumed-role/AWSReservedSSO_PowerUserAccess_b743e36821508738/chandan.dk@nirmata.com"
+    },
+    "tags": []
+}

@@ -1,0 +1,63 @@
+{
+    "cluster": {
+        "name": "example-cluster",
+        "arn": "arn:aws:eks:us-west-2:xxxx:cluster/example-cluster",
+        "createdAt": "2024-11-29T14:04:56.818000+05:30",
+        "version": "1.31",
+        "endpoint": "https://B10EEC123C5FD0F09C2A235C2A969BDC.yl4.us-west-2.eks.amazonaws.com",
+        "roleArn": "arn:aws:iam::xxxx:role/example_role",
+        "resourcesVpcConfig": {
+            "subnetIds": [
+                "subnet-id-1",
+                "subnet-id-2"
+            ],
+            "securityGroupIds": [],
+            "clusterSecurityGroupId": "sg-xxxx",
+            "vpcId": "vpc-id-1",
+            "endpointPublicAccess": true,
+            "endpointPrivateAccess": false,
+            "publicAccessCidrs": [
+                "0.0.0.0/0"
+            ]
+        },
+        "kubernetesNetworkConfig": {
+            "serviceIpv4Cidr": "172.20.0.0/16",
+            "ipFamily": "ipv4"
+        },
+        "logging": {
+            "clusterLogging": [
+                {
+                    "types": [
+                        "api",
+                        "audit",
+                        "authenticator",
+                        "controllerManager",
+                        "scheduler"
+                    ],
+                    "enabled": false
+                }
+            ]
+        },
+        "identity": {
+            "oidc": {
+                "issuer": "https://oidc.eks.us-west-2.amazonaws.com/id/B10EEC123C5FD0F09C2A235C2A969BDC"
+            }
+        },
+        "status": "ACTIVE",
+        "certificateAuthority": {
+            "data": "some-data"
+        },
+        "platformVersion": "eks.12",
+        "tags": {},
+        "encryptionConfig": [],
+        "health": {
+            "issues": []
+        },
+        "accessConfig": {
+            "authenticationMode": "API"
+        },
+        "upgradePolicy": {
+            "supportType": "STANDARD"
+        }
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "nodegroup": {
+        "nodegroupName": "bad_example_1",
+        "nodegroupArn": "arn:aws:eks:us-west-2:xxxx:nodegroup/example-cluster/bad_example_1/a6c9b924-02e8-be04-51ac-633114c575b0",
+        "clusterName": "example-cluster",
+        "version": "1.31",
+        "releaseVersion": "1.31.2-20241121",
+        "createdAt": "2024-11-28T10:19:04.442000+00:00",
+        "modifiedAt": "2024-11-28T10:37:03.997000+00:00",
+        "status": "ACTIVE",
+        "capacityType": "ON_DEMAND",
+        "scalingConfig": {
+            "minSize": 2,
+            "maxSize": 2,
+            "desiredSize": 2
+        },
+        "instanceTypes": [
+            "t3.medium"
+        ],
+        "subnets": [
+            "subnetid-1",
+            "subnetid-2"
+        ],
+        "remoteAccess": {
+            "ec2SshKey": "some-key",
+            "sourceSecurityGroups": []
+        },
+        "amiType": "AL2_x86_64",
+        "nodeRole": "arn:aws:iam::xxxx:role/example_role",
+        "labels": {},
+        "resources": {
+            "autoScalingGroups": [
+                {
+                    "name": "eks-bad_example_1-a6c9b924-02e8-be04-51ac-633114c575b0"
+                }
+            ],
+            "remoteAccessSecurityGroup": "some-security-group"
+        },
+        "diskSize": 20,
+        "health": {
+            "issues": []
+        },
+        "updateConfig": {
+            "maxUnavailable": 1
+        },
+        "tags": {}
+    }
+}

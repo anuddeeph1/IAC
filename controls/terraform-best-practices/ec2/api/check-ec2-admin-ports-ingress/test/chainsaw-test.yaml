@@ -1,0 +1,118 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/kyverno/chainsaw/main/.schemas/json/test-chainsaw-v1alpha1.json
+apiVersion: chainsaw.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: good-test-01
+spec:
+  steps:
+    - name: kyverno-json
+      try:
+      - script:
+          content: |
+            set -e
+            kyverno-json scan --payload ./good-test/good-payload-01.json --policy ../check-ec2-admin-ports-ingress.yaml --output json
+          check:
+            ($error): ~
+            (json_parse($stdout)):
+            - results:
+              - policy:
+                  apiVersion: json.kyverno.io/v1alpha1
+                  kind: ValidatingPolicy
+                  metadata:
+                    name: check-ec2-admin-ports-ingress
+                rules:
+                - rule:
+                    name: check-ec2-admin-ports-ingress
+                  error: ~
+                  violations: ~
+---
+apiVersion: chainsaw.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: good-test-02
+spec:
+  steps:
+    - name: kyverno-json
+      try:
+      - script:
+          content: |
+            set -e
+            kyverno-json scan --payload ./good-test/good-payload-02.json --policy ../check-ec2-admin-ports-ingress.yaml --output json
+          check:
+            ($error): ~
+            (json_parse($stdout)):
+            - results:
+              - policy:
+                  apiVersion: json.kyverno.io/v1alpha1
+                  kind: ValidatingPolicy
+                  metadata:
+                    name: check-ec2-admin-ports-ingress
+                rules:
+                - rule:
+                    name: check-ec2-admin-ports-ingress
+                  error: ~
+                  violations: ~
+---
+apiVersion: chainsaw.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: bad-test-01
+spec:
+  steps:
+    - name: kyverno-json
+      try:
+      - script:
+          content: |
+            set -e
+            kyverno-json scan --payload ./bad-test/bad-payload-01.json --policy ../check-ec2-admin-ports-ingress.yaml --output json
+          check:
+            ($error): ~
+            (json_parse($stdout)):
+            - results:
+              - policy:
+                  apiVersion: json.kyverno.io/v1alpha1
+                  kind: ValidatingPolicy
+                  metadata:
+                    name: check-ec2-admin-ports-ingress
+                rules:
+                - rule:
+                    name: check-ec2-admin-ports-ingress
+                  error: ~
+                  violations:
+                  - (contains(message, 'EC2 security group should not allow ingress from 0.0.0.0/0 to remote server administration ports (ports 22 and 3389)')): true
+                    errors:
+                    - type: FieldValueInvalid
+                      value: false
+                      detail: "Expected value: true"
+---
+apiVersion: chainsaw.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: bad-test-02
+spec:
+  steps:
+    - name: kyverno-json
+      try:
+      - script:
+          content: |
+            set -e
+            kyverno-json scan --payload ./bad-test/bad-payload-01.json --policy ../check-ec2-admin-ports-ingress.yaml --output json
+          check:
+            ($error): ~
+            (json_parse($stdout)):
+            - results:
+              - policy:
+                  apiVersion: json.kyverno.io/v1alpha1
+                  kind: ValidatingPolicy
+                  metadata:
+                    name: check-ec2-admin-ports-ingress
+                rules:
+                - rule:
+                    name: check-ec2-admin-ports-ingress
+                  error: ~
+                  violations:
+                  - (contains(message, 'EC2 security group should not allow ingress from 0.0.0.0/0 to remote server administration ports (ports 22 and 3389)')): true
+                    errors:
+                    - type: FieldValueInvalid
+                      value: false
+                      detail: "Expected value: true"

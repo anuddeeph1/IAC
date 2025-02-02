@@ -1,0 +1,28 @@
+{
+    "Vpcs": [
+        {
+            "CidrBlock": "10.0.0.0/16",
+            "DhcpOptionsId": "dopt-098773eb78012ec79",
+            "State": "available",
+            "VpcId": "vpc-07d132db49da824fe",
+            "OwnerId": "xxxxx",
+            "InstanceTenancy": "default",
+            "CidrBlockAssociationSet": [
+                {
+                    "AssociationId": "vpc-cidr-assoc-07c09973b279f439c",
+                    "CidrBlock": "10.0.0.0/16",
+                    "CidrBlockState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "IsDefault": false,
+            "Tags": [
+                {
+                    "Key": "Environment",
+                    "Value": "Production"
+                }
+            ]
+        }
+    ]
+}
