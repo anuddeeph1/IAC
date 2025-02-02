@@ -102,5 +102,5 @@ jobs:
           --namespace=httpd
           #kubectl create secret docker-registry image-pull-secret --docker-server=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com --docker-username=AWS --docker-password=$(aws ecr get-login-password --region ${{ secrets.AWS_REGION }}) --docker-email=${{ secrets.EMAIL }}
           cd config-files/k8s
-          envsubst < deployment.yaml | kubectl -n httpd apply -f -
+          envsubst < httpd.yaml | kubectl -n httpd apply -f -
       - run: echo "🍏 This job's status is ${{ job.status }}."
