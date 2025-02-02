@@ -27,8 +27,8 @@ jobs:
       - name: Install Terraform
         run: |
           echo "🍏 Installing Terraform..."
-          wget https://releases.hashicorp.com/terraform/0.15.0/terraform_0.15.0_linux_amd64.zip
-          unzip terraform_0.15.0_linux_amd64.zip
+          wget https://releases.hashicorp.com/terraform/1.10.5/terraform_1.10.5_linux_amd64.zip
+          unzip terraform_1.10.5_linux_amd64.zip
           sudo mv terraform /usr/local/bin/
           echo "Terraform installed successfully."
 
