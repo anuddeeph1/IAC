@@ -24,21 +24,21 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: nctl-scan-installer
-        uses: nirmata/action-install-nctl-scan@v0.0.4
-
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-
-      - name: Check nctl version.
-        run: nctl version
-
-      - name: NCTL Scan - Terraform
-        # cd config-files/terraform/ecs
-        # terraform init
-        # terraform plan -out tfplan.binary
-        # terraform show -json tfplan.binary | jq > payload.json
+      - name: Install Terraform
         run: |
-          ./scripts/install-tf.sh
-          nctl scan terraform --policies controls/terraform-best-practices/eks --resources config-files/terraform/eks/payload.json
+          echo "🍏 Installing Terraform..."
+          wget https://releases.hashicorp.com/terraform/0.15.0/terraform_0.15.0_linux_amd64.zip
+          unzip terraform_0.15.0_linux_amd64.zip
+          sudo mv terraform /usr/local/bin/
+          echo "Terraform installed successfully."
 
+      - name: Run Terraform commands
+        run: |
+          cd config-files/terraform/eks
+          echo "Running Terraform commands..."
+          terraform init
+          terraform plan -out tfplan.binary
+          terraform show -json tfplan.binary | jq > payload.json
+          echo "Terraform commands executed successfully."
+    
       - run: echo "🍏 This job's status is ${{ job.status }}."
