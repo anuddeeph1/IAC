@@ -78,13 +78,13 @@ jobs:
           aws eks --region ${{ secrets.AWS_REGION }} update-kubeconfig --name defectdojo
          #aws eks --region ${{ secrets.AWS_REGION }} update-kubeconfig --name ${{ secrets.EKS_CLUSTER_NAME }} 
       
-      - name: Install kubectl
-        run: |
-          echo "🍏 Installing kubectl..."
-          curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/linux/amd64/kubectl"
-          chmod +x ./kubectl
-          sudo mv ./kubectl /usr/local/bin/
-          echo "kubectl installed successfully."
+     # - name: Install kubectl
+     #   run: |
+     #     echo "🍏 Installing kubectl..."
+     #     curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/linux/amd64/kubectl"
+     #     chmod +x ./kubectl
+     #     sudo mv ./kubectl /usr/local/bin/
+     #     echo "kubectl installed successfully."
 
       - name: Set up Kubernetes
         uses: azure/setup-kubectl@v3
