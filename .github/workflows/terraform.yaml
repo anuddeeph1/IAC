@@ -32,6 +32,9 @@ jobs:
           sudo mv terraform /usr/local/bin/
           echo "Terraform installed successfully."
 
+      - name: Check terraform version
+        run: terraform version
+
       - name: Run Terraform commands
         run: |
           cd config-files/terraform/eks
