@@ -41,8 +41,8 @@ jobs:
           echo "Running Terraform commands..."
           terraform init
 
-          #terraform plan -out tfplan.binary
-          #terraform show -json tfplan.binary | jq > payload.json
+          terraform plan -out tfplan.binary
+          terraform show -json tfplan.binary | jq > payload.json
           echo "Terraform commands executed successfully."
     
       - run: echo "🍏 This job's status is ${{ job.status }}."
