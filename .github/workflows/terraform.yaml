@@ -53,7 +53,10 @@ jobs:
       - name: Set up AWS ECR authentication
         run: |
           aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
-
+      
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        
       - name: Build HTTPD Docker image
         run: |
           echo "🍏 Building HTTPD Docker image..."
