@@ -36,7 +36,7 @@ jobs:
 
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
 
-      - name: Check nctl version.
+      - name: Check version.
         run: kyverno-json version
 
       - name: kyverno-json Scan - Terraform
@@ -46,6 +46,10 @@ jobs:
         # terraform show -json tfplan.binary | jq > payload.json
         run: |
           ./scripts/install-tf.sh
-          kyverno-json scan  --policy controls/terraform-best-practices --payload config-files/terraform/ecs/payload.json
+          kyverno-json scan  --policy controls/terraform-best-practices --payload config-files/terraform/ecs/payload.json || exit 1
+
+      - name: Fail on Policy Violations
+        if: failure()
+        run: exit 1
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
