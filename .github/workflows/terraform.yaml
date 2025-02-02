@@ -75,8 +75,9 @@ jobs:
       - name: Set up kubeconfig for EKS
         run: |
           echo "Setting up kubectl for EKS..."
-          aws eks --region ${{ secrets.AWS_REGION }} update-kubeconfig --name ${{ secrets.EKS_CLUSTER_NAME }}
-          
+          aws eks --region ${{ secrets.AWS_REGION }} update-kubeconfig --name defectdojo
+         #aws eks --region ${{ secrets.AWS_REGION }} update-kubeconfig --name ${{ secrets.EKS_CLUSTER_NAME }} 
+      
       - name: Install kubectl
         run: |
           echo "🍏 Installing kubectl..."
